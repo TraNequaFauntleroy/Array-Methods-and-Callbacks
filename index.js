@@ -34,7 +34,7 @@ function getFinals(data) {
    return finalsOnly;
 }
 
-console.log('task 2', getFinals(fifaData));
+// console.log('task 2', getFinals(fifaData));
 
 
 
@@ -87,8 +87,14 @@ hint: the strings returned need to exactly match the string in step 4.
  */
 
 function getWinnersByYear(data, getYearscb, getWinnerscb) {
-    
+    const year = getYearscb(data, getFinals);
+    const winners = getWinnerscb(data, getFinals).map(function(item, index){
+        return `In ${year[index]}, ${item} won the world cup!`;
+    });
+    return winners;   
 }
+
+console.log('task 5', getWinnersByYear(fifaData, getYears, getWinners))
 
 
 
